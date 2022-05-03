@@ -1,0 +1,227 @@
+/*Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
+/*Variables*/
+$night-text-color: #e30000;
+$night-shadow-color: #7e0000;
+$night-background-color: #380000;
+
+$day-text-color: #c6d92a;
+$day-shadow-color: #616a14;
+$day-background-color: #1c3020;
+
+
+/*Dark and Light themmes*/
+.night-mode{
+    background-color: $night-background-color;
+    color: $night-text-color;
+    box-shadow: inset 0 0 5rem -1rem $night-text-color;
+
+    a{
+        color: $night-text-color;
+    }
+
+    h1,h2{
+        text-shadow: 6px 3px $night-shadow-color;
+    }
+
+    h2{
+        -webkit-text-stroke: 2px #620000;
+    }
+
+    h1:after{
+        border-bottom: 17px solid $night-text-color;
+        box-shadow: 7px 6px $night-shadow-color;
+    }
+
+    header svg{
+        fill: $night-text-color;
+    }
+}
+
+.day-mode{
+    background-color: $day-background-color;
+    color: $day-text-color;
+    box-shadow: inset 0 0 5rem 0rem $day-text-color;
+
+    a{
+        color: $day-text-color;
+    }
+
+    h1,h2{
+        text-shadow: 6px 3px $day-shadow-color;
+    }
+
+    h2{
+        -webkit-text-stroke: 2px #485416;
+    }
+    
+    h1:after{
+        border-bottom: 17px solid $day-text-color;
+        box-shadow: 7px 6px $day-shadow-color;
+    }
+
+    header svg{
+        fill: $day-text-color;
+    }
+}
+/*General styles*/
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'consolas';
+    margin: 0px;
+    background-color: rgb(15, 15, 15);
+    padding: 20px;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 25px;
+    overflow: overlay;
+}
+
+.crt-effect{
+    background: linear-gradient( to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0.6) );
+    background-size: 100% 0.3rem;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    opacity: 0.7;
+}
+
+/*Header*/
+header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+
+    svg{
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+
+    svg:hover{
+        opacity: 0.7;
+    }
+}
+
+/*Main*/
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.generator-main-title{
+    position: relative;
+    margin: 40px 0;
+    z-index: 1;
+
+    h1{
+        font-family: 'Press Start 2P', cursive;
+        text-transform: uppercase;
+        font-style: italic;
+        font-size: 100px;
+    }
+
+    @keyframes underlineDisplay {
+        0% {
+            width: 0%;
+        }
+        100% {
+            width: 45%;
+         }
+    }
+
+    h1:after{
+        content: "";
+        position: absolute;
+        bottom: -17px;
+        right: 0;
+        height: 0;
+        -webkit-animation: 1.0s underlineDisplay forwards;
+        animation: 1s underlineDisplay forwards;
+        -ms-transform: skewX(50deg);
+        -webkit-transform: skewX(50deg);
+        transform: skewX(50deg);
+    }
+
+    @keyframes headingDisplay {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+         }
+    }
+
+    h2{
+        position: absolute;
+        right: 0;
+        bottom: -50px;
+        font-family: 'Press Start 2P', cursive;
+        font-style: italic;
+        font-size: 73px;
+        letter-spacing: 10px;
+        opacity: 0;
+        -webkit-animation: 1s headingDisplay forwards;
+        animation: 1s headingDisplay forwards 1s;
+        animation-delay: 1s;
+    }
+}
+
+
+/*Form*/
+#generator-form{
+    margin: 40px 0;
+    font-size: 25px;
+}
+
+.field{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+
+/*Result display*/
+.result{
+    margin: 20px 0 0 0;
+}
+
+
+/*Footer*/
+footer{
+    margin-top: 10px;
+    padding: 20px 0;
+}

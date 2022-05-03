@@ -1,0 +1,212 @@
+/*Fonts*/
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+/*Variables*/
+/*Dark and Light themmes*/
+.night-mode {
+  background-color: #380000;
+  color: #e30000;
+  box-shadow: inset 0 0 5rem -1rem #e30000;
+}
+.night-mode a {
+  color: #e30000;
+}
+.night-mode h1, .night-mode h2 {
+  text-shadow: 6px 3px #7e0000;
+}
+.night-mode h2 {
+  -webkit-text-stroke: 2px #620000;
+}
+.night-mode h1:after {
+  border-bottom: 17px solid #e30000;
+  box-shadow: 7px 6px #7e0000;
+}
+.night-mode header svg {
+  fill: #e30000;
+}
+
+.day-mode {
+  background-color: #1c3020;
+  color: #c6d92a;
+  box-shadow: inset 0 0 5rem 0rem #c6d92a;
+}
+.day-mode a {
+  color: #c6d92a;
+}
+.day-mode h1, .day-mode h2 {
+  text-shadow: 6px 3px #616a14;
+}
+.day-mode h2 {
+  -webkit-text-stroke: 2px #485416;
+}
+.day-mode h1:after {
+  border-bottom: 17px solid #c6d92a;
+  box-shadow: 7px 6px #616a14;
+}
+.day-mode header svg {
+  fill: #c6d92a;
+}
+
+/*General styles*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "consolas";
+  margin: 0px;
+  background-color: rgb(15, 15, 15);
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-radius: 25px;
+  overflow: overlay;
+}
+
+.crt-effect {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2) 70%, rgba(0, 0, 0, 0.6));
+  background-size: 100% 0.3rem;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/*Header*/
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+header svg {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+header svg:hover {
+  opacity: 0.7;
+}
+
+/*Main*/
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.generator-main-title {
+  position: relative;
+  margin: 40px 0;
+  z-index: 1;
+}
+.generator-main-title h1 {
+  font-family: "Press Start 2P", cursive;
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 100px;
+}
+@-webkit-keyframes underlineDisplay {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 45%;
+  }
+}
+@keyframes underlineDisplay {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 45%;
+  }
+}
+.generator-main-title h1:after {
+  content: "";
+  position: absolute;
+  bottom: -17px;
+  right: 0;
+  height: 0;
+  -webkit-animation: 1s underlineDisplay forwards;
+  animation: 1s underlineDisplay forwards;
+  transform: skewX(50deg);
+}
+@-webkit-keyframes headingDisplay {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes headingDisplay {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.generator-main-title h2 {
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  font-family: "Press Start 2P", cursive;
+  font-style: italic;
+  font-size: 73px;
+  letter-spacing: 10px;
+  opacity: 0;
+  -webkit-animation: 1s headingDisplay forwards;
+  animation: 1s headingDisplay forwards 1s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+/*Form*/
+#generator-form {
+  margin: 40px 0;
+  font-size: 25px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+/*Result display*/
+.result {
+  margin: 20px 0 0 0;
+}
+
+/*Footer*/
+footer {
+  margin-top: 10px;
+  padding: 20px 0;
+}/*# sourceMappingURL=style.css.map */
