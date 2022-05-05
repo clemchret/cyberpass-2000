@@ -14,7 +14,7 @@ $day-background-color: #1c3020;
 
 /*Dark and Light themmes*/
 .night-mode{
-    background-color: $night-background-color;
+    background: radial-gradient(#280000, $night-background-color);
     color: $night-text-color;
     box-shadow: inset 0 0 5rem -1rem $night-text-color;
 
@@ -38,10 +38,22 @@ $day-background-color: #1c3020;
     header svg{
         fill: $night-text-color;
     }
+
+    input[type="checkbox"] {
+        background-color: transparent;
+        color: $night-text-color;
+        border: 0.15em solid $night-text-color;
+    }
+
+    .generate-button button{
+        color: $night-text-color;
+        border: 4px solid $night-text-color;
+        background-color: transparent;
+    }
 }
 
 .day-mode{
-    background-color: $day-background-color;
+    background: radial-gradient(#222600, $day-background-color);
     color: $day-text-color;
     box-shadow: inset 0 0 5rem 0rem $day-text-color;
 
@@ -65,6 +77,18 @@ $day-background-color: #1c3020;
     header svg{
         fill: $day-text-color;
     }
+
+    .generate-button button{
+        color: $day-text-color;
+        border: 4px solid $day-text-color;
+        background-color: transparent;
+    }
+
+    input[type="checkbox"] {
+        background-color: transparent;
+        color: $day-text-color;
+        border: 0.15em solid $day-text-color;
+    }
 }
 /*General styles*/
 * { 
@@ -79,9 +103,11 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    position: relative;
+    z-index: 1;
     margin: 0px;
     background-color: rgb(15, 15, 15);
-    padding: 20px;
+    border: 20px solid rgb(15, 15, 15);
     font-family: 'Press Start 2P', cursive;
 }
 
@@ -91,6 +117,7 @@ body{
     justify-content: space-between;
     flex-direction: column;
     position: relative;
+    z-index: -1;
     height: 100%;
     width: 100%;
     border-radius: 25px;
@@ -103,8 +130,9 @@ body{
     width: 100%;
     height: 100%;
     position: absolute;
-    z-index: 2;
+    z-index: 0;
     pointer-events: none;
+    border-radius: 25px;
 }
 
 a{
@@ -146,10 +174,26 @@ main{
     margin: 40px 0;
     z-index: 1;
 
+    @keyframes MainHeadingDisplay {
+        0% { 
+            transform: scale(2);
+            opacity: 0;
+        }
+        20%{
+            opacity: 0;
+        }
+        100% { 
+            transform: scale(1.0);
+            opacity: 1;
+        }
+    }
+
     h1{
         text-transform: uppercase;
         font-style: italic;
         font-size: 100px;
+        -webkit-animation: 1s MainHeadingDisplay ease-in forwards;
+        animation: 1s MainHeadingDisplay ease-in forwards;
     }
 
     @keyframes underlineDisplay {
@@ -161,25 +205,28 @@ main{
          }
     }
 
+
     h1:after{
         content: "";
         position: absolute;
         bottom: -17px;
         right: 0;
         height: 0;
-        -webkit-animation: 1.0s underlineDisplay forwards;
-        animation: 1s underlineDisplay forwards;
+        -webkit-animation: 1s underlineDisplay ease-in-out forwards 1s;
+        animation: 1s underlineDisplay ease-in-out forwards 1s;
         -ms-transform: skewX(50deg);
         -webkit-transform: skewX(50deg);
         transform: skewX(50deg);
     }
 
-    @keyframes headingDisplay {
+    @keyframes SecondHeadingDisplay {
         0% {
             opacity: 0;
+            transform: translateX(+10%);
         }
         100% {
             opacity: 1;
+            transform: translateX(0%);
          }
     }
 
@@ -191,17 +238,30 @@ main{
         font-size: 73px;
         letter-spacing: 10px;
         opacity: 0;
-        -webkit-animation: 1s headingDisplay forwards 1;
-        animation: 1s headingDisplay forwards 1s;
-        animation-delay: 1s;
+        -webkit-animation: 1.0s SecondHeadingDisplay ease-out forwards 2s;
+        animation: 1.0s SecondHeadingDisplay ease-out forwards 2s;
     }
 }
 
 
 /*Form*/
+@keyframes formResultDisplay {
+    from{
+        opacity: 0;
+        height: 0;
+    }
+    to{
+        opacity: 1;
+        height: 100%;
+    }
+}
 #generator-form{
+    opacity: 0;
+    height: 0;
     margin: 40px 0;
     font-size: 25px;
+    -webkit-animation: 1s formResultDisplay ease-in forwards 3s;
+    animation: 1s formResultDisplay ease-in forwards 3s;
 }
 
 .field{
@@ -219,13 +279,10 @@ input[type="checkbox"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color: #380000;
     margin: 0;
     font: inherit;
-    color: currentColor;
     width: 1.15em;
     height: 1.15em;
-    border: 0.15em solid currentColor;
 }
 
 input[type="checkbox"]::before {
@@ -251,11 +308,8 @@ input[type="checkbox"]:checked::before {
     padding: 20px;
     margin-top: 40px;
     font-family: 'Press Start 2P', cursive;
-    color: red;
     cursor: pointer;
     text-transform: uppercase;
-    border: 4px solid #e30000;
-    background-color: transparent;
     font-size: 20px;
     -webkit-animation: 1.0s scaleTransform infinite alternate;
     animation: 1.0s scaleTransform infinite alternate;
@@ -264,6 +318,7 @@ input[type="checkbox"]:checked::before {
 
 /*Result display*/
 .result{
+    display: none;
     margin: 20px 0 0 0;
 }
 
