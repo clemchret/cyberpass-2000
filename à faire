@@ -1,19 +1,12 @@
 design :
 
 indicateur de force de mdp
-design bouton
-design input
-design check box
-effet ancien écran
+tooltip copied
+design range input
 responsive
-bouton light and dark
 changer la scrollbar
+
 
 javascript :
 
-fonction night et lignt mode
-demander de cocher au moins une des cases
-demander de remplir le nbr de caractères
-fonction copier clipboard
-fonction generation mdp
 stocker préférence du thème

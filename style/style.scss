@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 
-/*Variables*/
+/*Variables & mixins*/
 $night-text-color: #e30000;
 $night-shadow-color: #7e0000;
 $night-background-color: #380000;
@@ -10,6 +10,13 @@ $night-background-color: #380000;
 $day-text-color: #c6d92a;
 $day-shadow-color: #616a14;
 $day-background-color: #1c3020;
+
+@mixin  flexCentering {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 
 
 /*Dark and Light themmes*/
@@ -50,6 +57,28 @@ $day-background-color: #1c3020;
         border: 4px solid $night-text-color;
         background-color: transparent;
     }
+
+    .generate-button button:hover{
+        background: $night-text-color;
+        color: $night-background-color;
+    }
+
+    .inputResult input{
+        background: transparent;
+        border-color:  $night-text-color;
+        color: $night-text-color;
+    }
+
+    .inputResult button{
+        background: transparent;
+        border: 0.15em solid $night-text-color;
+        color: $night-text-color;
+    }
+
+    .inputResult button:hover{
+        background: $night-text-color;
+        color: $night-background-color;
+    }
 }
 
 .day-mode{
@@ -78,16 +107,38 @@ $day-background-color: #1c3020;
         fill: $day-text-color;
     }
 
+    input[type="checkbox"] {
+        background-color: transparent;
+        color: $day-text-color;
+        border: 0.15em solid $day-text-color;
+    }
+
     .generate-button button{
         color: $day-text-color;
         border: 4px solid $day-text-color;
         background-color: transparent;
     }
 
-    input[type="checkbox"] {
-        background-color: transparent;
+    .generate-button button:hover{
+        background: $day-text-color;
+        color: $day-background-color;
+    }
+
+    .inputResult input{
+        background: transparent;
+        border-color:  $day-text-color;
         color: $day-text-color;
+    }
+
+    .inputResult button{
+        background: transparent;
         border: 0.15em solid $day-text-color;
+        color: $day-text-color;
+    }
+
+    .inputResult button:hover{
+        background: $day-text-color;
+        color: $day-background-color;
     }
 }
 /*General styles*/
@@ -99,15 +150,12 @@ $day-background-color: #1c3020;
 
 body{
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    @include flexCentering();
     position: relative;
-    z-index: 1;
     margin: 0px;
     background-color: rgb(15, 15, 15);
     border: 20px solid rgb(15, 15, 15);
+    border-radius: 45px;
     font-family: 'Press Start 2P', cursive;
 }
 
@@ -121,8 +169,8 @@ body{
     height: 100%;
     width: 100%;
     border-radius: 25px;
-    overflow: overlay;
-}
+    overflow-x: hidden;
+    overflow-y: scroll;}
 
 .crt-effect{
     background: linear-gradient( to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0.6) );
@@ -163,10 +211,7 @@ header{
 
 /*Main*/
 main{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    @include flexCentering();
 }
 
 .generator-main-title{
@@ -259,7 +304,7 @@ main{
     opacity: 0;
     height: 0;
     margin: 40px 0;
-    font-size: 25px;
+    font-size: 22px;
     -webkit-animation: 1s formResultDisplay ease-in forwards 3s;
     animation: 1s formResultDisplay ease-in forwards 3s;
 }
@@ -272,9 +317,6 @@ main{
 }
 
 input[type="checkbox"] {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -320,11 +362,64 @@ input[type="checkbox"]:checked::before {
 .result{
     display: none;
     margin: 20px 0 0 0;
+
+    .label{
+        text-transform: uppercase;
+        font-style: italic;
+        font-weight: bold;
+    }
 }
 
+.inputResult{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0px;
+
+    input{
+        flex: auto;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 20px;
+        text-overflow: ellipsis;
+        border-width: 0 0 0.15em 0;
+        cursor: text;
+    }
+
+    button{
+        font-family: 'Press Start 2P', cursive;
+        text-transform: uppercase;
+        font-weight: bold;
+        padding: 15px;
+        cursor: pointer;
+    }
+}
 
 /*Footer*/
 footer{
     margin-top: 10px;
     padding: 20px 0;
+}
+
+/*Media Queries*/
+@media (max-width: 1024px) {
+
+    .generator-main-title{
+        transform: scale(0.8);
+    }
+    
+}
+
+@media (max-width: 768px) {
+
+    .generator-main-title{
+        transform: scale(0.6);
+    }
+    
+}
+
+@media (max-width: 425px) {
+
+    .generator-main-title{
+        transform: scale(0.3);
+    }
+    
 }

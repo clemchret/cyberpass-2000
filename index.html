@@ -25,35 +25,37 @@
         <form id="generator-form">
 
             <div class="field">
-                <label for="character">How many characters ?</label><br>
-                <input type="number" id="character" name="character" min="3" max="20"/>
+                <label for="passwordLength">How many characters ?</label>
+                <input type="range" id="passwordLength" name="passwordLength" min="7" max="25" value="10"/>
             </div>
 
            <div class="field">
-                <label for="Lettres">Letters a-Z</label>
-                <input type="checkbox" id="Lettres" name="Lettres">
+                <label for="letters">Letters a-Z</label>
+                <input type="checkbox" id="letters" name="letters">
            </div>
 
            <div class="field">
-                <label for="Numbers">Numbers 0-9</label>
-                <input type="checkbox" id="Numbers" name="Numbers">
+                <label for="numbers">Numbers 0-9</label>
+                <input type="checkbox" id="numbers" name="numbers">
            </div>
 
            <div class="field">
-                <label for="Special">Special characters +!?</label> 
-                <input type="checkbox" id="Special" name="Special"> 
+                <label for="special">Special characters +!?</label> 
+                <input type="checkbox" id="special" name="special"> 
            </div>
 
            <div class="generate-button">
-                <button type="submit">Launch Quantic Calculation !</button>
+                <button id='generate-button' type="submit">Launch Quantic Calculation !</button>
            </div>
 
         </form>
 
         <div class="result">
-            <label for="output">Your cyberpass is : </label>
-            <input type="text" value="s5A5z>frKn?eejbe72-" id="output">
-            <button>Copy to Clipboard</button>
+            <label for="password">Your <span class="label">cyberpass</span> is : </label>
+            <div class="inputResult">
+                <input type="text" value="" id="password" disabled>
+                <button id="copyClipboard">Copy</button>
+            </div>
         </div>
     </main>
 
