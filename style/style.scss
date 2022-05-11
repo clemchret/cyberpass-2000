@@ -156,6 +156,8 @@ body{
     background-color: rgb(15, 15, 15);
     border: 20px solid rgb(15, 15, 15);
     border-radius: 45px;
+    overflow: hidden;
+    pointer-events: none;
     font-family: 'Press Start 2P', cursive;
 }
 
@@ -169,8 +171,10 @@ body{
     height: 100%;
     width: 100%;
     border-radius: 25px;
+    pointer-events: all;
     overflow-x: hidden;
-    overflow-y: scroll;}
+    overflow-y: auto;
+}
 
 .crt-effect{
     background: linear-gradient( to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0.6) );
@@ -217,7 +221,6 @@ main{
 .generator-main-title{
     position: relative;
     margin: 40px 0;
-    z-index: 1;
 
     @keyframes MainHeadingDisplay {
         0% { 
@@ -316,7 +319,32 @@ main{
     padding: 10px 0;
 }
 
+#passwordLength {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    border: 0.15em solid red;
+    background: transparent;
+    outline: none; /* Remove outline */
+}
+ 
+ #passwordLength::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 10px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: red; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+#passwordLength::-moz-range-thumb {
+    width: 10px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: red; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
 input[type="checkbox"] {
+    @include flexCentering();
     cursor: pointer;
     -webkit-appearance: none;
     -moz-appearance: none;

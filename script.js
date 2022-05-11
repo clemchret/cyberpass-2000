@@ -16,26 +16,17 @@ function generatePassword (e){
     let password= '';
     let passwordLength = document.getElementById('passwordLength').value;
 
-    let numbers = '';
-    if(document.getElementById('numbers').checked){
-        numbers = '0123456789';
-    }
+    //Si la case input est cochée, la variable prend une valeur correspondante, sinon elle est vide
+    let numbers = ((document.getElementById('numbers').checked) ? '0123456789' : '');
+    let letters = ((document.getElementById('letters').checked) ? 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' : '');
+    let specialCharacters = ((document.getElementById('special').checked) ? '!@#$%^&*()' : '');
 
-    let letters = '';
-    if(document.getElementById('letters').checked){
-        letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    }
-
-    let specialCharacters = '';
-    if(document.getElementById('special').checked){
-        specialCharacters = '!@#$%^&*()';
-    }
-
+    //Addition des chaînes de caractères vide ou non afin d'éviter les mutliples conditions pour toutes les combinaisons de cases cochées
     let selectedCharacters = numbers+letters+specialCharacters;
 
     //Génération du mdp
     if(passwordLength === '' || selectedCharacters === ''){
-        alert('Invalid');
+        alert('Please select at least one option');
         return false;
     }else{
         for (let i = 0; i <= passwordLength-1; i++) {
@@ -51,11 +42,16 @@ function generatePassword (e){
 document.getElementById('generate-button').addEventListener('click', generatePassword);
 
 
-//Copie press-papier    
+//Copie presse-papier    
 function copyClipboard() {
     let password = document.getElementById("password").value;
     navigator.clipboard.writeText(password);
-    alert(`${password} copied`);
+    alert(`Password copied in clipboard`);
 }
 
 document.getElementById('copyClipboard').addEventListener('click', copyClipboard);
+
+
+//Génération d'un numéro aléatoire de version. N'est-ce pas commme ça qu'ils font tous ? ;)
+let randomVersion = ((Math.random()*10).toPrecision(4));
+document.querySelector('.version').innerText = `V${randomVersion}`;
