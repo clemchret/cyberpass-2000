@@ -218,7 +218,7 @@ header{
 /*Main*/
 main{
     @include flexCentering();
-    width: 100%;
+    width: 65%;
 }
 
 .generator-main-title{
@@ -309,6 +309,7 @@ main{
     }
 }
 #generator-form{
+    width: inherit;
     opacity: 0;
     height: 0;
     margin: 40px 0;
@@ -356,8 +357,10 @@ input[type="checkbox"] {
     appearance: none;
     margin: 0;
     font: inherit;
-    width: 1.15em;
-    height: 1.15em;
+    min-width: 1.15em;
+    min-height: 1.15em;
+    max-width: 1.15em;
+    max-height: 1.15em;
 }
 
 input[type="checkbox"]::before {
@@ -395,6 +398,7 @@ input[type="checkbox"]:checked::before {
 /*Result display*/
 .result{
     display: none;
+    width: 50%;
     margin: 20px 0 0 0;
 
     .label{
@@ -410,7 +414,7 @@ input[type="checkbox"]:checked::before {
     margin: 20px 0px;
 
     input{
-        flex: auto;
+        width: 100%;
         font-family: 'Press Start 2P', cursive;
         font-size: 20px;
         text-overflow: ellipsis;
@@ -436,7 +440,23 @@ footer{
 }
 
 /*Media Queries*/
+@media (max-width: 1440px) {
+
+    main{
+        width: 80%;
+    }
+    
+    .result{
+        width: 60%;
+    }
+
+}
+
 @media (max-width: 1024px) {
+
+    main{
+        width: 90%;
+    }
 
     .generator-main-title{
         transform: scale(0.8);
@@ -445,9 +465,18 @@ footer{
     #generator-form{
         font-size: 20px;
     }
+
+    .result{
+        width: inherit;
+    }
+
 }
 
 @media (max-width: 768px) {
+
+    main{
+        width: 100%;
+    }
 
     .generator-main-title{
         transform: scale(0.6);
@@ -460,6 +489,10 @@ footer{
 }
 
 @media (max-width: 425px) {
+
+    main{
+        width: 100%;
+    }
 
     .generator-main-title{
         transform: scale(0.3);
