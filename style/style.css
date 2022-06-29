@@ -23,6 +23,15 @@
 .night-mode header svg {
   fill: #e30000;
 }
+.night-mode #passwordLength {
+  border: 0.15em solid #e30000;
+}
+.night-mode #passwordLength::-webkit-slider-thumb {
+  background: #e30000;
+}
+.night-mode #passwordLength::-moz-range-thumb {
+  background: #e30000;
+}
 .night-mode input[type=checkbox] {
   background-color: transparent;
   color: #e30000;
@@ -72,6 +81,15 @@
 }
 .day-mode header svg {
   fill: #c6d92a;
+}
+.day-mode #passwordLength {
+  border: 0.15em solid #c6d92a;
+}
+.day-mode #passwordLength::-webkit-slider-thumb {
+  background: #c6d92a;
+}
+.day-mode #passwordLength::-moz-range-thumb {
+  background: #c6d92a;
 }
 .day-mode input[type=checkbox] {
   background-color: transparent;
@@ -313,6 +331,13 @@ main {
   -webkit-animation: 1s formResultDisplay ease-in forwards 3s;
   animation: 1s formResultDisplay ease-in forwards 3s;
 }
+#generator-form div.slider-label {
+  display: flex;
+  justify-content: space-between;
+}
+#generator-form :first-child {
+  display: block;
+}
 
 .field {
   display: flex;
@@ -326,10 +351,9 @@ main {
   /* Override default CSS styles */
   -moz-appearance: none;
        appearance: none;
-  border: 0.15em solid red;
+  width: 100%;
   background: transparent;
   outline: none;
-  /* Remove outline */
 }
 
 #passwordLength::-webkit-slider-thumb {
@@ -337,24 +361,16 @@ main {
   /* Override default look */
   appearance: none;
   width: 10px;
-  /* Set a specific slider handle width */
   height: 25px;
-  /* Slider handle height */
-  background: red;
-  /* Green background */
   cursor: pointer;
-  /* Cursor on hover */
 }
 
 #passwordLength::-moz-range-thumb {
   width: 10px;
-  /* Set a specific slider handle width */
+  /* Slider width */
   height: 25px;
-  /* Slider handle height */
-  background: red;
-  /* Green background */
+  /* Slider height */
   cursor: pointer;
-  /* Cursor on hover */
 }
 
 input[type=checkbox] {

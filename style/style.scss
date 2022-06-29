@@ -46,6 +46,18 @@ $day-background-color: #1c3020;
         fill: $night-text-color;
     }
 
+    #passwordLength {
+        border: 0.15em solid $night-text-color;
+    }
+     
+     #passwordLength::-webkit-slider-thumb {
+        background: $night-text-color;
+    }
+    
+    #passwordLength::-moz-range-thumb {
+        background: $night-text-color;
+    }
+
     input[type="checkbox"] {
         background-color: transparent;
         color: $night-text-color;
@@ -105,6 +117,18 @@ $day-background-color: #1c3020;
 
     header svg{
         fill: $day-text-color;
+    }
+
+    #passwordLength {
+        border: 0.15em solid $day-text-color;
+    }
+     
+     #passwordLength::-webkit-slider-thumb {
+        background: $day-text-color;
+    }
+    
+    #passwordLength::-moz-range-thumb {
+        background: $day-text-color;
     }
 
     input[type="checkbox"] {
@@ -316,6 +340,15 @@ main{
     font-size: 22px;
     -webkit-animation: 1s formResultDisplay ease-in forwards 3s;
     animation: 1s formResultDisplay ease-in forwards 3s;
+
+    div.slider-label{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    :first-child{
+        display: block;
+    }
 }
 
 .field{
@@ -328,25 +361,23 @@ main{
 #passwordLength {
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
-    border: 0.15em solid red;
+    width: 100%;
     background: transparent;
-    outline: none; /* Remove outline */
+    outline: none;
 }
  
  #passwordLength::-webkit-slider-thumb {
     -webkit-appearance: none; /* Override default look */
     appearance: none;
-    width: 10px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: red; /* Green background */
-    cursor: pointer; /* Cursor on hover */
+    width: 10px;
+    height: 25px;
+    cursor: pointer;
 }
 
 #passwordLength::-moz-range-thumb {
-    width: 10px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: red; /* Green background */
-    cursor: pointer; /* Cursor on hover */
+    width: 10px; /* Slider width */
+    height: 25px; /* Slider height */
+    cursor: pointer;
 }
 
 input[type="checkbox"] {
