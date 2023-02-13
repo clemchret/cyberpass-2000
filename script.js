@@ -1,8 +1,33 @@
+//Chargement thème à l'arrivée sur la page
+window.onload = loadTheme;
+let item = JSON.parse(localStorage.getItem('themepref'));
+let themeClass = document.querySelector('.container');
+function loadTheme(){
+    if ( item === null) {
+        return;
+    }else{
+        if(item === 'night'){
+            return
+        }else{
+            themeClass.classList.toggle('day-mode');
+            themeClass.classList.toggle('night-mode');
+        }
+    }
+};
+
+
 //Toggle class thème sombre/clair
 function setTheme () {
     const container = document.querySelector('.container');
     container.classList.toggle('day-mode');
     container.classList.toggle('night-mode');
+
+    //Ajout de la clé en fonction du thème lors du clique
+    if(container.classList[1] === 'day-mode'){
+        localStorage.setItem('themepref', JSON.stringify('day'));
+    }else{
+        localStorage.setItem('themepref', JSON.stringify('night'));
+    }
 };
 
 document.getElementById('theme-button').addEventListener('click', setTheme);
